@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAID STYLE | Elevate Your Essentials</title>
+    <!-- استدعاء الخطوط الفاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- استدعاء الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #080808;
+            --bg-modal: #121214;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #ffffff;
+            --text-gray: #999999;
+            --card-bg: #1a1a1e;
+            --border-color: #2a2a2e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- Announcement Bar --- */
+        .announcement-bar {
+            background: linear-gradient(90deg, #111, var(--gold), #111);
+            color: #000;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 8px 0;
+            text-transform: uppercase;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: var(--bg-main);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .luxury-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .luxury-logo span {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: -1px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active { color: var(--gold); }
+
+        .nav-icons {
+            display: flex;
+            gap: 22px;
+            font-size: 18px;
+            align-items: center;
+        }
+        
+        .icon-wrapper { position: relative; cursor: pointer; }
+
+        .badge {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background-color: var(--gold);
+            color: #000;
+            font-size: 10px;
+            font-weight: bold;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Hero Section --- */
+       .hero {
+    min-height: 90vh;
+    height: auto;
+    background: linear-gradient(to right, rgba(8, 8, 8, 0.85) 40%, rgba(8, 8, 8, 0.3)), 
+    url('images/hero.jpg.jpg') center/cover no-repeat;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+        /* --- Toast Notification --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--card-bg);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            text-align: center;
+            border-radius: 4px;
+            padding: 14px;
+            position: fixed;
+            z-index: 3000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 13px;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        #toast.show { visibility: visible; opacity: 1; }
+
+        /* --- Scroll to Top Button --- */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background-color: var(--card-bg);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        #scrollTopBtn:hover { background-color: var(--gold); color: #000; }
+
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--bg-modal);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .footer-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .footer-info p {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-info p i { color: var(--gold); }
+
+        /* --- Modal & Overlays --- */
+         .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background-color: var(--bg-modal);
+  width: 90%;
+  max-width: 1100px;
+  max-height: 85vh;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 22px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover { color: var(--gold); }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        /* --- Catalog Filters & Controls Bar --- */
+        .catalog-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--text-gray);
+            padding: 6px 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .sort-dropdown {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-item:hover { border-color: var(--gold); }
+
+        .product-heart {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 5;
+        }
+        .product-heart.active, .product-heart:hover { color: #ff4757; }
+
+        .product-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .product-item img:hover { transform: scale(1.02); }
+
+        .product-name { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+        
+        .product-price { 
+            font-size: 15px; 
+            font-weight: 600; 
+            color: var(--gold); 
+            margin-bottom: 10px; 
+        }
+
+        /* --- Options Selectors (Color, Size, Volume) --- */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .color-selector, .size-selector, .volume-selector {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .color-option:hover, .color-option.selected { border-color: var(--gold); transform: scale(1.15); }
+
+        .size-option, .volume-option {
+            font-size: 11px;
+            padding: 3px 8px;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--text-gray);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .size-option:hover, .size-option.selected,
+        .volume-option:hover, .volume-option.selected { 
+            border-color: var(--gold); 
+            color: var(--gold); 
+            background: rgba(212, 175, 55, 0.1); 
+        }
+
+        .btn-add-cart {
+            background-color: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            width: 100%;
+            padding: 9px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .btn-add-cart:hover { background-color: var(--gold); color: #000; }
+
+        .section-container { display: none; }
+
+        .cart-item-row, .wishlist-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .total-text { font-size: 18px; font-weight: 600; text-align: right; margin: 20px 0; color: var(--gold); }
+
+        .form-group { margin-top: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 12px; color: var(--text-gray); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 10px; background: var(--bg-main); border: 1px solid var(--border-color); color: white; border-radius: 4px; outline: none;
+        }
+
+        .promo-box {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .promo-box input { flex: 1; }
+        .promo-box button { padding: 0 20px; font-size: 11px; }
+
+        /* --- Image Zoom Modal Lightbox --- */
+        #lightboxModal {
+            display: none;
+            position: fixed;
+            z-index: 4000;
+            padding-top: 100px;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            text-align: center;
+        }
+        #lightboxImage {
+            max-width: 80%;
+            max-height: 75vh;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+        }
+        #lightboxClose {
+            position: absolute;
+            top: 30px; right: 40px;
+            color: #fff; font-size: 35px; cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+    body {
+        overflow-x: hidden;
+    }
+
+    nav {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo-text {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-icons {
+    margin-top: 8px;
+}
+
+    .hero {
+        height: auto;
+        min-height: 80vh;
+        padding: 40px 20px;
+        background-position: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-box {
+        width: 95%;
+        padding: 20px;
+    }
+
+    footer {
+        padding: 30px 20px;
+    }
+}
+.btn-gold {
+    background-color: var(--gold);
+    color: #000;
+    border: none;
+    padding: 14px 35px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+#mainModal {
+    display: none;
+}
+    
+        /* LUXURY OLIVE / BEIGE UPGRADE */
+        :root { --lux-olive:#3d4030; --lux-olive-dark:#292b21; --lux-olive-soft:#6b6d5a; --lux-beige:#f3efe6; --lux-cream:#faf8f2; --lux-sand:#e4ddcf; --lux-line:#d8d0c1; --lux-ink:#202119; --lux-muted:#747366; }
+        body{background:var(--lux-beige)!important;color:var(--lux-ink)!important;font-family:'Jost',sans-serif}
+        .announcement-bar{display:none!important}
+        nav{background:rgba(243,239,230,.96)!important;border-bottom:1px solid rgba(61,64,48,.1)!important;box-shadow:none!important;backdrop-filter:blur(12px);padding:22px 42px 18px!important;position:relative;z-index:20}
+        .logo-container{gap:11px!important}.luxury-logo{background:var(--lux-olive)!important;color:#faf8f2!important;border:0!important}.logo-text{color:var(--lux-olive-dark)!important;font-family:'Cormorant Garamond',Georgia,serif!important;font-size:22px!important;font-weight:600!important;letter-spacing:5px!important}
+        .nav-links li a{color:var(--lux-ink)!important;letter-spacing:1.4px!important;font-size:11px!important}.nav-links li a:hover,.nav-links li a.active{color:var(--lux-olive)!important}.icon-wrapper{color:var(--lux-olive-dark)!important}.badge{background:var(--lux-olive)!important;color:#fff!important}
+        .hero{position:relative!important;min-height:min(780px,calc(100vh - 90px))!important;height:78vh!important;padding:0!important;display:flex!important;align-items:center!important;overflow:hidden!important;background:var(--lux-olive-dark)!important}
+        .hero-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;z-index:0!important}.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(25,27,20,.72),rgba(25,27,20,.34) 43%,rgba(25,27,20,.08) 75%),linear-gradient(0deg,rgba(20,21,16,.32),transparent 45%);pointer-events:none}
+        .hero-text{position:relative!important;z-index:2!important;max-width:720px!important;padding:70px 7vw!important;color:#fff!important}.hero-kicker,.section-kicker{margin:0 0 16px!important;font-size:10px!important;letter-spacing:3.5px!important;text-transform:uppercase!important;color:#ded9cc!important}.hero-text h1{margin:0!important;font-family:'Cormorant Garamond',Georgia,serif!important;font-size:clamp(52px,7vw,96px)!important;line-height:.88!important;letter-spacing:1px!important;font-weight:500!important;text-transform:uppercase!important}.hero-text h1 span{font-style:italic;font-weight:400}.hero-subtitle{margin:22px 0 30px!important;max-width:420px;color:rgba(255,255,255,.82)!important;font-size:13px!important;letter-spacing:1px!important}.btn-gold{background:var(--lux-olive)!important;color:#fff!important;border:1px solid var(--lux-olive)!important;padding:15px 30px!important;font-family:'Jost',sans-serif!important;font-size:10px!important;letter-spacing:2.4px!important;font-weight:600!important}.btn-gold:hover{background:#fff!important;color:var(--lux-olive-dark)!important;border-color:#fff!important}
+        .editorial-video-section{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(380px,1.22fr);gap:clamp(35px,7vw,100px);align-items:center;padding:clamp(70px,9vw,125px) clamp(22px,7vw,100px);background:var(--lux-cream);border-bottom:1px solid var(--lux-line)}
+        .editorial-copy{max-width:430px}.editorial-copy .section-kicker{color:var(--lux-olive)!important;margin-bottom:14px!important}.editorial-copy h2{margin:0;color:var(--lux-olive-dark);font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(42px,5vw,70px);line-height:.92;font-weight:500}.editorial-copy h2 em{color:var(--lux-olive-soft);font-weight:400}.editorial-copy>p:not(.section-kicker){margin:24px 0 28px;color:var(--lux-muted);line-height:1.8;font-size:13px;max-width:370px}.editorial-btn{background:transparent;color:var(--lux-olive-dark);border:1px solid var(--lux-olive);padding:13px 23px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;cursor:pointer;transition:.25s}.editorial-btn:hover{background:var(--lux-olive);color:#fff}
+        .editorial-video-wrap{position:relative;min-height:500px;height:min(68vw,690px);max-height:690px;overflow:hidden;background:var(--lux-sand)}.editorial-video{width:100%;height:100%;object-fit:cover;display:block}.video-label{position:absolute;left:18px;bottom:18px;padding:8px 11px;background:rgba(35,37,28,.78);color:#f6f2e8;font-size:9px;letter-spacing:2px}
+        footer{background:var(--lux-olive-dark)!important;color:#eae6dc!important;border-top:0!important}footer h3{color:#fff!important;font-family:'Cormorant Garamond',Georgia,serif!important;letter-spacing:2px}footer p{color:#bcb9ad!important}.modal-overlay{background:rgba(29,30,24,.72)!important}.modal-box{background:var(--lux-cream)!important;color:var(--lux-ink)!important;border:1px solid var(--lux-line)!important}.modal-title{color:var(--lux-olive-dark)!important;font-family:'Cormorant Garamond',Georgia,serif!important;letter-spacing:2px!important}
+        @media(max-width:900px){nav{padding:18px 20px!important}.hero{min-height:650px!important;height:76vh!important}.hero-text{padding:55px 28px!important}.editorial-video-section{grid-template-columns:1fr;padding:70px 28px}.editorial-copy{max-width:620px}.editorial-video-wrap{height:65vw;min-height:420px}}
+        @media(max-width:600px){.logo-text{font-size:17px!important;letter-spacing:3px!important}.hero{min-height:600px!important;height:78vh!important}.hero-video{object-position:58% center!important}.hero-overlay{background:linear-gradient(0deg,rgba(20,21,16,.70),rgba(20,21,16,.10) 75%)}.hero-text{align-self:flex-end!important;padding:30px 22px 45px!important}.hero-text h1{font-size:clamp(46px,14vw,70px)!important}.hero-subtitle{font-size:12px!important;margin:18px 0 24px!important}.editorial-video-section{padding:58px 20px;gap:38px}.editorial-copy h2{font-size:48px}.editorial-video-wrap{min-height:430px;height:118vw}}
+
+/* FINAL LUXURY PALETTE — cream / soft beige / refined olive */
+:root{
+  --bg-main:#F5F1E8;
+  --bg-modal:#FBF8F1;
+  --gold:#5F6B4B;
+  --gold-light:#5F6B4B;
+  --text-light:#26251F;
+  --text-gray:#777469;
+  --card-bg:#EDE7DA;
+  --border-color:#D8D0C1;
+}
+body{background:#F5F1E8;color:#26251F;font-family:'Jost',sans-serif;}
+nav{background:#F5F1E8!important;color:#26251F;border-bottom:1px solid #DDD5C7!important;padding:24px 52px!important;}
+.logo-container{gap:0!important;}
+.logo-text{font-family:'Playfair Display',serif!important;font-size:26px!important;letter-spacing:4px!important;color:#2C2B24!important;font-weight:500!important;}
+.nav-links li a{color:#45443B!important;}
+.nav-links li a:hover,.nav-links li a.active{color:#5F6B4B!important;}
+.nav-icons{color:#45443B!important;}
+.badge{background:#5F6B4B!important;color:#fff!important;}
+.hero{position:relative!important;min-height:88vh!important;height:88vh!important;padding:0 7vw!important;background:#DCCFB9!important;overflow:hidden!important;}
+.hero-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;}
+.hero-overlay{position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(31,31,26,.58) 0%,rgba(31,31,26,.20) 48%,rgba(31,31,26,.04) 100%)!important;}
+.hero-text{position:relative!important;z-index:2!important;max-width:620px!important;color:#fff!important;}
+.hero-kicker{letter-spacing:4px!important;font-size:11px!important;color:#F3EBDD!important;}
+.hero-text h1{font-family:'Playfair Display',serif!important;font-weight:500!important;letter-spacing:1px!important;}
+.hero-text h1 span{color:#E7DEC9!important;}
+.hero-subtitle{color:#F2EDE2!important;}
+.btn-gold{background:#5F6B4B!important;color:#fff!important;border:1px solid #5F6B4B!important;border-radius:0!important;}
+.btn-gold:hover{background:#5F6B4B!important;border-color:#5F6B4B!important;}
+.section-container,.modal-box{background:#FBF8F1!important;color:#26251F!important;}
+.product-card{background:#EDE7DA!important;border-color:#D8D0C1!important;}
+.product-card h3,.product-card .product-name{color:#2C2B24!important;}
+.editorial-section{background:#EDE3D3!important;}
+.editorial-video-wrap{border-radius:0!important;box-shadow:0 18px 50px rgba(55,50,39,.12)!important;}
+.video-label{background:rgba(39,40,32,.82)!important;color:#F5F1E8!important;}
+footer{background:#5F6B4B!important;color:#F5F1E8!important;}
+footer p,footer h3{color:#F5F1E8!important;}
+#scrollTopBtn{background:#5F6B4B!important;color:#fff!important;}
+.form-group input,.form-group textarea,.form-group select{background:#F5F1E8!important;border-color:#D8D0C1!important;color:#26251F!important;}
+.close-modal{color:#5F6B4B!important;}
+
+@media(max-width:600px){
+ nav{padding:18px 18px!important;}
+ .logo-text{font-size:20px!important;letter-spacing:3px!important;}
+ .hero{height:78vh!important;min-height:520px!important;padding:30px 22px!important;}
+ .hero-text h1{font-size:42px!important;line-height:1.02!important;}
+}
+
+
+/* ===== FINAL LIGHT OLIVE / BEIGE LUXURY REDESIGN ===== */
+:root{
+  --olive:#5F6B4B;
+  --olive-dark:#5F6B4B;
+  --olive-soft:#5F6B4B;
+  --beige:#DCD9CE;
+  --beige-light:#E9E6DD;
+  --beige-card:#E4E1D8;
+  --beige-deep:#CFCBC0;
+  --ink:#30332b;
+  --muted:#777768;
+  --line:#d9cfbd;
+}
+body{background:#E9E6DD!important;color:var(--ink)!important;font-family:'Jost',sans-serif!important;}
+.modal-overlay{background:rgba(48,51,43,.38)!important;backdrop-filter:blur(5px);}
+.modal-box{background:var(--beige-light)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:0 28px 80px rgba(65,58,45,.18)!important;}
+.modal-title{color:var(--ink)!important;letter-spacing:2.5px!important;font-weight:500!important;}
+.close-modal{color:var(--olive-dark)!important;background:var(--beige)!important;border-radius:50%;}
+.catalog-controls{align-items:center!important;gap:18px!important;margin-bottom:28px!important;}
+.filter-buttons{gap:9px!important;}
+.filter-btn{
+  background:var(--beige)!important;color:var(--ink)!important;border:1px solid var(--line)!important;
+  padding:10px 18px!important;border-radius:999px!important;font-size:11px!important;letter-spacing:1.4px!important;
+  font-weight:500!important;transition:all .25s ease!important;box-shadow:0 2px 8px rgba(80,70,50,.04)!important;
+}
+.filter-btn:hover,.filter-btn.active{background:var(--olive)!important;color:#fff!important;border-color:var(--olive)!important;transform:translateY(-1px);box-shadow:0 7px 18px rgba(127,139,99,.20)!important;}
+.catalog-controls > div:last-child{position:relative;min-width:190px;}
+.sort-dropdown{
+  width:100%!important;appearance:none!important;-webkit-appearance:none!important;
+  background:var(--beige)!important;color:var(--ink)!important;border:1px solid var(--line)!important;
+  padding:12px 42px 12px 58px!important;border-radius:999px!important;font-size:11px!important;letter-spacing:.7px!important;
+  outline:none!important;box-shadow:0 3px 12px rgba(80,70,50,.06)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237f8b63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:right 16px center!important;
+}
+.sort-dropdown:hover,.sort-dropdown:focus{border-color:var(--olive)!important;box-shadow:0 6px 20px rgba(127,139,99,.16)!important;}
+.sort-dropdown option{background:var(--beige-light)!important;color:var(--ink)!important;padding:12px!important;}
+.products-grid{gap:22px!important;}
+.product-item{
+  background:var(--beige-card)!important;border:1px solid var(--line)!important;border-radius:16px!important;
+  padding:12px!important;box-shadow:0 5px 18px rgba(72,62,45,.055)!important;overflow:hidden!important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease!important;
+}
+.product-item:hover{border-color:#c7bda9!important;transform:translateY(-4px);box-shadow:0 16px 32px rgba(72,62,45,.11)!important;}
+.product-item img{border-radius:11px!important;}
+.product-item h3,.product-item .product-name{color:var(--ink)!important;font-weight:500!important;letter-spacing:.4px!important;}
+.product-item .price,.product-item .product-price{color:var(--olive-dark)!important;font-weight:600!important;}
+.wishlist-btn{background:rgba(247,241,230,.9)!important;color:var(--olive-dark)!important;border:1px solid var(--line)!important;backdrop-filter:blur(5px);}
+.wishlist-btn:hover,.wishlist-btn.is-favorite{background:var(--olive)!important;color:#fff!important;border-color:var(--olive)!important;}
+.wishlist-item-row{background:var(--beige)!important;border:1px solid var(--line)!important;border-radius:14px!important;padding:13px 15px!important;margin-bottom:10px!important;box-shadow:0 4px 14px rgba(70,60,45,.05)!important;}
+.wishlist-item-row img{border-radius:10px!important;width:58px!important;height:68px!important;}
+.wishlist-add-btn{background:var(--olive)!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:9px 15px!important;font-size:10px!important;letter-spacing:1px!important;}
+.wishlist-add-btn:hover{background:var(--olive-dark)!important;}
+.wishlist-remove-btn{background:var(--beige-light)!important;color:var(--olive-dark)!important;border:1px solid var(--line)!important;border-radius:50%!important;width:34px;height:34px;}
+.promo-box{background:var(--beige)!important;border-color:var(--line)!important;border-radius:14px!important;}
+.promo-box input{background:var(--beige-light)!important;border-color:var(--line)!important;color:var(--ink)!important;border-radius:999px!important;}
+.btn-gold{background:var(--olive)!important;color:#fff!important;border:0!important;border-radius:999px!important;letter-spacing:1.2px!important;box-shadow:0 8px 18px rgba(127,139,99,.18)!important;}
+.btn-gold:hover{background:var(--olive-dark)!important;}
+.form-group input,.form-group textarea,.form-group select{background:var(--beige-light)!important;border-color:var(--line)!important;color:var(--ink)!important;border-radius:10px!important;}
+#cartContent,#wishlistContent,#catalogContent,#accountContent,#checkoutContent{color:var(--ink)!important;}
+@media(max-width:700px){
+ .catalog-controls{align-items:stretch!important;}
+ .catalog-controls > div:last-child{width:100%;min-width:0;}
+ .filter-buttons{overflow-x:auto;flex-wrap:nowrap!important;padding-bottom:5px;scrollbar-width:none;}
+ .filter-btn{white-space:nowrap!important;}
+ .products-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;}
+ .product-item{border-radius:13px!important;padding:9px!important;}
+ .sort-dropdown{padding-top:11px!important;padding-bottom:11px!important;}
+}
+@media(max-width:430px){.products-grid{grid-template-columns:1fr!important;}}
+
+
+/* FINAL SMALL TOUCHES — olive image area + softer home + beige category backdrop */
+.image-placeholder, .empty-image, .product-image-placeholder {
+    background: linear-gradient(145deg,#5F6B4B,#5F6B4B)!important;
+    color:#F5EEE2!important;
+    border:1px solid #5F6B4B!important;
+    border-radius:12px!important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 8px 24px rgba(72,62,45,.10)!important;
+}
+.editorial-video-section{background:#f0e8da!important;}
+.editorial-video-wrap{background:#e5dccb!important;}
+.hero{background-color:#e8dfcf!important;}
+.catalog-controls,.products-grid{background:transparent!important;}
+.modal-box{background:linear-gradient(180deg,#f8f2e7 0%,#efe6d7 100%)!important;}
+
+/* FINAL REQUESTED OLIVE — sampled from the user's reference image */
+:root {
+  --user-olive: #5F6B4B;
+  --user-olive-light: #5F6B4B;
+  --user-olive-soft: #5F6B4B;
+}
+footer,
+.announcement-bar,
+.badge,
+.btn-gold,
+#scrollTopBtn {
+  background-color: var(--user-olive) !important;
+  background-image: none !important;
+}
+footer { color: #F5F1E8 !important; }
+footer h3, footer p, footer p i { color: #F5F1E8 !important; }
+.nav-links li a:hover,
+.nav-links li a.active,
+.total-text,
+.close-modal,
+.product-price,
+.catalog-controls > div:last-child::before {
+  color: var(--user-olive) !important;
+}
+.sort-dropdown {
+  accent-color: var(--user-olive) !important;
+  color: var(--user-olive) !important;
+  border-color: var(--user-olive) !important;
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .2px !important;
+}
+.sort-dropdown option:checked {
+  background: var(--user-olive) !important;
+  color: #fff !important;
+}
+.sort-dropdown:focus {
+  border-color: var(--user-olive) !important;
+  box-shadow: 0 6px 20px rgba(66,68,31,.16) !important;
+}
+.btn-add-cart,
+.wishlist-add-btn {
+  border-color: var(--user-olive) !important;
+  color: var(--user-olive) !important;
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 1.4px !important;
+}
+.btn-add-cart:hover,
+.wishlist-add-btn:hover {
+  background: var(--user-olive) !important;
+  color: #fff !important;
+}
+.color-option:hover,
+.color-option.selected,
+.size-option:hover, .size-option.selected,
+.volume-option:hover, .volume-option.selected {
+  border-color: var(--user-olive) !important;
+  color: var(--user-olive) !important;
+}
+.size-option:hover, .size-option.selected,
+.volume-option:hover, .volume-option.selected {
+  background: rgba(66,68,31,.09) !important;
+}
+.image-placeholder, .empty-image, .product-image-placeholder {
+  background: linear-gradient(145deg, #5F6B4B, #5F6B4B) !important;
+  border-color: var(--user-olive-soft) !important;
+  color: #F7F1E6 !important;
+}
+/* So the lower Home/contact area uses the exact same olive, not a darker substitute. */
+.editorial-video-section { background: #EDE3D3 !important; }
+.editorial-video-wrap { background: #E7DECE !important; }
+
+
+footer, footer h3, footer p, .sort-dropdown, .wishlist-add-btn {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+footer h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+}
+
+
+/* FINAL POLISH: custom sort menu — no browser blue selection */
+.sort-dropdown{display:none!important;}
+.catalog-controls > div:last-child{min-width:190px;position:relative;}
+.sort-custom{position:relative;width:100%;}
+.sort-custom-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:#EDE3D3;border:1px solid #DDD0BC;color:#30332B;
+  padding:12px 16px 12px 20px;border-radius:999px;cursor:pointer;
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.7px;font-weight:500;
+  box-shadow:0 3px 12px rgba(80,70,50,.06);transition:.2s ease;
+}
+.sort-custom-trigger:hover,.sort-custom.open .sort-custom-trigger{
+  border-color:#5F6B4B;box-shadow:0 6px 20px rgba(95,107,75,.16);
+}
+.sort-chevron{font-size:18px;line-height:10px;color:#5F6B4B;transform:translateY(-2px);}
+.sort-custom-menu{
+  display:none;position:absolute;z-index:5000;top:calc(100% + 7px);left:0;width:100%;
+  background:#EDE3D3;border:1px solid #DDD0BC;border-radius:14px;overflow:hidden;
+  box-shadow:0 16px 34px rgba(72,62,45,.14);padding:5px;
+}
+.sort-custom.open .sort-custom-menu{display:block;}
+.sort-custom-menu button{
+  width:100%;display:block;text-align:left;background:transparent;border:0;color:#30332B;
+  padding:11px 13px;border-radius:9px;font-family:'Jost',sans-serif;font-size:11px;
+  cursor:pointer;transition:.16s ease;
+}
+.sort-custom-menu button:hover,.sort-custom-menu button.active{
+  background:#5F6B4B;color:#fff;
+}
+/* Category pages: soft caramel-beige background, not too dark or too pale */
+#catalogContent{background:#EDE3D3!important;border-radius:18px!important;}
+.modal-box{background:#EDE3D3!important;}
+.products-grid{background:transparent!important;}
+
+
+/* FINAL USER REQUEST — only requested color/nav/Wishlist visibility adjustments */
+nav{
+  background:#DCD9CE!important;
+  border-bottom:1px solid #CFCBC0!important;
+}
+nav .logo-text,
+nav .nav-links li a{
+  color:#30332b!important;
+}
+nav .nav-links li a:hover,
+nav .nav-links li a.active{
+  color:var(--olive)!important;
+}
+nav .nav-icons{
+  color:var(--olive)!important;
+}
+.wishlist-add-btn{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:5!important;
+  background:var(--olive)!important;
+  color:#fff!important;
+  border:1px solid var(--olive)!important;
+}
+.wishlist-add-btn:hover,
+.wishlist-add-btn:focus{
+  background:var(--olive-dark)!important;
+  color:#fff!important;
+  opacity:1!important;
+}
+
+
+/* ===== FINAL UNIFIED PALETTE =====
+   Beige = all page/category/modal backgrounds
+   Olive = buttons + Home contact section only
+*/
+:root{
+  --unified-beige:#DDD9CF;
+  --unified-beige-light:#E5E2DA;
+  --unified-beige-border:#C9C5BB;
+  --unified-olive:#5F6B4B;
+  --unified-olive-dark:#5F6B4B;
+}
+
+/* Keep product area clean and neutral/beige; no mixed white blocks */
+body,
+main,
+.catalog-section,
+.catalog-header,
+.catalog-controls,
+.products-grid,
+.modal-box,
+.section-container,
+#wishlistContent,
+#cartContent,
+#checkoutContent,
+#accountContent,
+#orderTrackingContent{
+  background-color:var(--unified-beige)!important;
+}
+
+/* Category/navigation strip: one consistent beige */
+.category-nav,
+.category-menu,
+.side-style,
+.sidebar,
+.filter-panel,
+.category-panel{
+  background-color:var(--unified-beige)!important;
+}
+
+/* Any category links stay normal; only buttons are olive */
+.category-nav a,
+.category-menu a,
+.side-style a,
+.sidebar a,
+.filter-panel a{
+  color:inherit!important;
+  background:transparent!important;
+}
+
+/* Buttons only = olive */
+button,
+.btn-gold,
+.btn-add-cart,
+.wishlist-add-btn,
+#scrollTopBtn{
+  background-color:var(--unified-olive)!important;
+  border-color:var(--unified-olive)!important;
+}
+button:hover,
+.btn-gold:hover,
+.btn-add-cart:hover,
+.wishlist-add-btn:hover,
+#scrollTopBtn:hover{
+  background-color:var(--unified-olive-dark)!important;
+  border-color:var(--unified-olive-dark)!important;
+}
+
+/* Home contact section remains olive */
+footer,
+.home-contact,
+.contact-section{
+  background-color:var(--unified-olive)!important;
+}
+
+/* Sort dropdown: clean beige panel, no mixed colors */
+.sort-dropdown{
+  background-color:var(--unified-beige)!important;
+  color:inherit!important;
+  border-color:var(--unified-beige-border)!important;
+}
+.sort-dropdown option,
+.sort-dropdown option:checked,
+.sort-dropdown option:hover{
+  background-color:var(--unified-beige)!important;
+  color:#2f302b!important;
+}
+
+/* Product image area stays as-is; only remove accidental background mixing */
+.product-item{
+  background-color:transparent!important;
+}
+
+/* Softer modern scrollbar for product/modal areas */
+.products-grid::-webkit-scrollbar,
+.modal-box::-webkit-scrollbar,
+#lightboxModal::-webkit-scrollbar{
+  width:8px;
+}
+.products-grid::-webkit-scrollbar-track,
+.modal-box::-webkit-scrollbar-track,
+#lightboxModal::-webkit-scrollbar-track{
+  background:transparent;
+}
+.products-grid::-webkit-scrollbar-thumb,
+.modal-box::-webkit-scrollbar-thumb,
+#lightboxModal::-webkit-scrollbar-thumb{
+  background:var(--unified-olive)!important;
+  border-radius:999px;
+  border:2px solid transparent;
+  background-clip:padding-box;
+}
+.products-grid::-webkit-scrollbar-thumb:hover,
+.modal-box::-webkit-scrollbar-thumb:hover,
+#lightboxModal::-webkit-scrollbar-thumb:hover{
+  background:var(--unified-olive-dark)!important;
+}
+
+/* Modern close button */
+#lightboxClose,
+.modal-close,
+.close-modal{
+  width:38px!important;
+  height:38px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.45)!important;
+  color:#2f302b!important;
+  border:1px solid var(--unified-beige-border)!important;
+  font-size:24px!important;
+  line-height:1!important;
+  transition:all .25s ease!important;
+}
+#lightboxClose:hover,
+.modal-close:hover,
+.close-modal:hover{
+  background:var(--unified-olive)!important;
+  color:#fff!important;
+  border-color:var(--unified-olive)!important;
+  transform:rotate(90deg) scale(1.04);
+}
+
+/* Keep Wishlist Add to Bag visible */
+.wishlist-add-btn{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#fff!important;
+}
+
+
+/* =========================================================
+   FINAL LIGHT / CONSISTENT PALETTE
+   One palette for desktop + mobile.
+   ========================================================= */
+:root{
+  --clean-beige:#E5E0D6;
+  --clean-beige-2:#EEEAE2;
+  --clean-beige-3:#D9D3C8;
+  --clean-olive:#5F6B4B;
+  --clean-olive-dark:#5F6B4B;
+  --clean-olive-soft:#5F6B4B;
+  --clean-ink:#34382F;
+  --clean-muted:#73766E;
+  --clean-line:#D0CBC1;
+}
+
+/* Base */
+html, body{
+  background:var(--clean-beige)!important;
+  color:var(--clean-ink)!important;
+}
+body{
+  color-scheme:light!important;
+}
+
+/* Top/navigation — same beige everywhere */
+.announcement-bar,
+nav,
+header,
+.navbar{
+  background:var(--clean-beige)!important;
+  background-image:none!important;
+  border-color:var(--clean-line)!important;
+}
+.announcement-bar{
+  color:var(--clean-ink)!important;
+}
+.logo-text,
+.nav-links li a,
+.nav-icons{
+  color:var(--clean-ink)!important;
+}
+.nav-links li a:hover,
+.nav-links li a.active{
+  color:var(--clean-olive)!important;
+}
+.luxury-logo{
+  background:var(--clean-beige-2)!important;
+  border-color:var(--clean-olive)!important;
+  box-shadow:none!important;
+}
+.luxury-logo span{
+  color:var(--clean-olive)!important;
+}
+.badge{
+  background:var(--clean-olive)!important;
+  color:#fff!important;
+}
+
+/* Home / main surfaces */
+main,
+.hero + *,
+.catalog-section,
+.catalog-header,
+.catalog-controls,
+.products-grid{
+  background:var(--clean-beige)!important;
+}
+.catalog-controls{
+  border-color:var(--clean-line)!important;
+}
+.hero{
+  /* Keep the hero image, just remove the overly-black color cast. */
+  background-color:var(--clean-beige)!important;
+  background-image:
+    linear-gradient(to right, rgba(45,48,39,.42) 0%, rgba(45,48,39,.10) 58%, rgba(45,48,39,.02) 100%),
+    url('images/hero.jpg.jpg')!important;
+}
+
+/* Category strip / side style / filters */
+.category-nav,
+.category-menu,
+.side-style,
+.sidebar,
+.filter-panel,
+.category-panel,
+.filter-buttons{
+  background:var(--clean-beige)!important;
+}
+.category-nav a,
+.category-menu a,
+.side-style a,
+.sidebar a,
+.filter-panel a{
+  background:transparent!important;
+  color:var(--clean-ink)!important;
+}
+.filter-btn{
+  background:var(--clean-beige-2)!important;
+  color:var(--clean-ink)!important;
+  border-color:var(--clean-line)!important;
+}
+.filter-btn:hover,
+.filter-btn.active{
+  background:var(--clean-olive)!important;
+  color:#fff!important;
+  border-color:var(--clean-olive)!important;
+}
+
+/* Sort: light beige only; olive only on the control/action state */
+.sort-custom-trigger{
+  background:var(--clean-beige-2)!important;
+  color:var(--clean-ink)!important;
+  border-color:var(--clean-line)!important;
+}
+.sort-chevron{
+  color:var(--clean-olive)!important;
+}
+.sort-custom-menu{
+  background:var(--clean-beige-2)!important;
+  border-color:var(--clean-line)!important;
+}
+.sort-custom-menu button{
+  background:transparent!important;
+  color:var(--clean-ink)!important;
+}
+.sort-custom-menu button:hover,
+.sort-custom-menu button.active{
+  background:var(--clean-olive)!important;
+  color:#fff!important;
+}
+
+/* Product area: no white/cream/olive patches mixed into it */
+.products-grid{
+  background:var(--clean-beige)!important;
+}
+.product-item{
+  background:var(--clean-beige-2)!important;
+  border-color:var(--clean-line)!important;
+  box-shadow:0 5px 18px rgba(60,56,45,.06)!important;
+}
+.product-item:hover{
+  border-color:var(--clean-olive-soft)!important;
+  box-shadow:0 12px 26px rgba(60,56,45,.09)!important;
+}
+.product-name,
+.product-item h3{
+  color:var(--clean-ink)!important;
+}
+.product-price,
+.product-item .price{
+  color:var(--clean-olive-dark)!important;
+}
+.size-option,
+.volume-option{
+  background:var(--clean-beige-2)!important;
+  color:var(--clean-muted)!important;
+  border-color:var(--clean-line)!important;
+}
+.size-option:hover,.size-option.selected,
+.volume-option:hover,.volume-option.selected{
+  background:rgba(120,134,101,.10)!important;
+  color:var(--clean-olive-dark)!important;
+  border-color:var(--clean-olive)!important;
+}
+.color-option:hover,.color-option.selected{
+  border-color:var(--clean-olive)!important;
+}
+
+/* Buttons — olive only */
+.btn-add-cart,
+.btn-gold,
+.wishlist-add-btn{
+  background:var(--clean-olive)!important;
+  color:#fff!important;
+  border-color:var(--clean-olive)!important;
+}
+.btn-add-cart:hover,
+.btn-gold:hover,
+.wishlist-add-btn:hover{
+  background:var(--clean-olive-dark)!important;
+  color:#fff!important;
+  border-color:var(--clean-olive-dark)!important;
+}
+
+/* Wishlist/cart/check-out surfaces — beige, not white */
+.modal-overlay{
+  background:rgba(52,56,47,.30)!important;
+  backdrop-filter:blur(8px)!important;
+}
+.modal-box,
+.section-container,
+#catalogContent,
+#cartContent,
+#wishlistContent,
+#checkoutContent,
+#accountContent,
+#orderTrackingContent{
+  background:var(--clean-beige)!important;
+  color:var(--clean-ink)!important;
+  border-color:var(--clean-line)!important;
+}
+.modal-title,
+.total-text{
+  color:var(--clean-olive-dark)!important;
+}
+.wishlist-item-row,
+.promo-box{
+  background:var(--clean-beige-2)!important;
+  border-color:var(--clean-line)!important;
+}
+.wishlist-remove-btn{
+  background:var(--clean-beige-3)!important;
+  color:var(--clean-olive-dark)!important;
+  border-color:var(--clean-line)!important;
+}
+.form-group input,
+.form-group textarea,
+.form-group select,
+.promo-box input{
+  background:var(--clean-beige-2)!important;
+  color:var(--clean-ink)!important;
+  border-color:var(--clean-line)!important;
+}
+
+/* Close button — soft, modern */
+.close-modal,
+#lightboxClose,
+.modal-close{
+  background:var(--clean-beige-2)!important;
+  color:var(--clean-ink)!important;
+  border:1px solid var(--clean-line)!important;
+  box-shadow:0 5px 16px rgba(60,56,45,.08)!important;
+}
+.close-modal:hover,
+#lightboxClose:hover,
+.modal-close:hover{
+  background:var(--clean-olive)!important;
+  color:#fff!important;
+  border-color:var(--clean-olive)!important;
+  transform:rotate(90deg) scale(1.03)!important;
+}
+
+/* Home contact: the one intentionally olive section */
+footer,
+.home-contact,
+.contact-section{
+  background:var(--clean-olive)!important;
+  color:#F7F5F0!important;
+  border-color:var(--clean-olive)!important;
+}
+footer h3,
+footer p,
+footer p i{
+  color:#F7F5F0!important;
+}
+
+/* Empty image area */
+.image-placeholder,
+.empty-image,
+.product-image-placeholder{
+  background:linear-gradient(145deg,var(--clean-olive-soft),var(--clean-olive))!important;
+  color:#fff!important;
+  border-color:var(--clean-olive-soft)!important;
+}
+
+/* Modern scrollbar, same on every screen */
+*{
+  scrollbar-color:var(--clean-olive-soft) var(--clean-beige);
+  scrollbar-width:thin;
+}
+::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+::-webkit-scrollbar-track{
+  background:var(--clean-beige)!important;
+}
+::-webkit-scrollbar-thumb{
+  background:var(--clean-olive-soft)!important;
+  border-radius:999px!important;
+  border:2px solid var(--clean-beige)!important;
+}
+::-webkit-scrollbar-thumb:hover{
+  background:var(--clean-olive)!important;
+}
+
+/* Mobile uses the exact same colors — only layout changes */
+@media(max-width:700px){
+  body,
+  nav,
+  main,
+  .catalog-section,
+  .catalog-header,
+  .catalog-controls,
+  .products-grid,
+  .category-nav,
+  .category-menu,
+  .side-style,
+  .sidebar,
+  .filter-panel,
+  .filter-buttons,
+  .modal-box,
+  .section-container{
+    background-color:var(--clean-beige)!important;
+  }
+  .product-item,
+  .filter-btn,
+  .sort-custom-trigger,
+  .sort-custom-menu,
+  .wishlist-item-row,
+  .promo-box,
+  .form-group input,
+  .form-group textarea,
+  .form-group select{
+    background-color:var(--clean-beige-2)!important;
+  }
+  .btn-add-cart,
+  .btn-gold,
+  .wishlist-add-btn{
+    background-color:var(--clean-olive)!important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE PALETTE MATCH — FINAL
+   Use one light beige + one soft olive everywhere.
+   ========================================================= */
+:root{
+  --mobile-beige:#E6E1D6;
+  --mobile-beige-light:#ECE8DF;
+  --mobile-beige-line:#D1CCC1;
+  --mobile-olive:#5F6B4B;
+  --mobile-olive-dark:#5F6B4B;
+  --mobile-olive-soft:#5F6B4B;
+  --mobile-text:#34372F;
+}
+
+/* One palette for all screens */
+html,body{
+  background:var(--mobile-beige)!important;
+  color:var(--mobile-text)!important;
+}
+nav,
+.announcement-bar,
+main,
+.catalog-section,
+.catalog-header,
+.catalog-controls,
+.products-grid,
+.category-nav,
+.category-menu,
+.side-style,
+.sidebar,
+.filter-panel,
+.category-panel,
+.modal-box,
+.section-container,
+#wishlistContent,
+#cartContent,
+#checkoutContent,
+#accountContent,
+#orderTrackingContent{
+  background-color:var(--mobile-beige)!important;
+  background-image:none!important;
+}
+.product-item,
+.filter-btn,
+.sort-custom-trigger,
+.sort-custom-menu,
+.wishlist-item-row,
+.promo-box,
+.form-group input,
+.form-group textarea,
+.form-group select{
+  background-color:var(--mobile-beige-light)!important;
+}
+.product-item{
+  border-color:var(--mobile-beige-line)!important;
+}
+
+/* Olive is reserved for actions / selected states / contact */
+.btn-gold,
+.btn-add-cart,
+.wishlist-add-btn,
+.filter-btn.active,
+.sort-custom-menu button.active,
+.badge,
+#scrollTopBtn{
+  background:var(--mobile-olive)!important;
+  border-color:var(--mobile-olive)!important;
+  color:#fff!important;
+}
+.btn-gold:hover,
+.btn-add-cart:hover,
+.wishlist-add-btn:hover,
+.filter-btn.active:hover{
+  background:var(--mobile-olive-dark)!important;
+  border-color:var(--mobile-olive-dark)!important;
+}
+footer,
+.home-contact,
+.contact-section{
+  background:var(--mobile-olive)!important;
+  color:#F7F6F1!important;
+}
+
+/* Product prices / active text */
+.product-price,
+.product-item .price,
+.total-text,
+.modal-title{
+  color:var(--mobile-olive-dark)!important;
+}
+.nav-links li a:hover,
+.nav-links li a.active{
+  color:var(--mobile-olive)!important;
+}
+.nav-icons,
+.icon-wrapper{
+  color:var(--mobile-olive-dark)!important;
+}
+
+/* HEART — never red. Empty = soft olive; clicked = exact olive. */
+.product-heart{
+  color:var(--mobile-olive-soft)!important;
+  background:transparent!important;
+  border:none!important;
+}
+.product-heart:hover,
+.product-heart.active,
+.product-heart:focus,
+.product-heart.active:hover{
+  color:var(--mobile-olive)!important;
+  background:transparent!important;
+  border-color:transparent!important;
+}
+.product-heart.active i,
+.product-heart:hover i{
+  color:var(--mobile-olive)!important;
+}
+
+/* Wishlist header heart too */
+.icon-wrapper .fa-heart{
+  color:var(--mobile-olive-dark)!important;
+}
+
+/* HERO — remove blue/dark cast and visually match the light mobile look */
+.hero{
+  background:var(--mobile-beige)!important;
+}
+.hero-video{
+  filter:saturate(.72) hue-rotate(8deg) brightness(1.10) contrast(.90)!important;
+}
+.hero-overlay{
+  background:
+    linear-gradient(90deg,rgba(65,69,58,.34),rgba(120,125,112,.18) 45%,rgba(230,225,214,.10) 100%),
+    linear-gradient(0deg,rgba(45,48,41,.18),rgba(230,225,214,.03) 55%,rgba(230,225,214,.08))!important;
+}
+.hero-text{
+  color:#fff!important;
+}
+.hero-kicker{
+  color:#F0EEE8!important;
+}
+.hero-subtitle{
+  color:rgba(255,255,255,.90)!important;
+}
+
+/* Sort / option list: no browser-blue selection */
+.sort-custom-trigger,
+.sort-dropdown{
+  background:var(--mobile-beige-light)!important;
+  color:var(--mobile-text)!important;
+  border-color:var(--mobile-beige-line)!important;
+}
+.sort-custom-menu{
+  background:var(--mobile-beige-light)!important;
+  border-color:var(--mobile-beige-line)!important;
+}
+.sort-custom-menu button{
+  color:var(--mobile-text)!important;
+  background:transparent!important;
+}
+.sort-custom-menu button:hover,
+.sort-custom-menu button.active{
+  background:var(--mobile-olive)!important;
+  color:#fff!important;
+}
+
+/* Soft scrollbar */
+*{
+  scrollbar-color:var(--mobile-olive-soft) var(--mobile-beige);
+  scrollbar-width:thin;
+}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:var(--mobile-beige)!important}
+::-webkit-scrollbar-thumb{
+  background:var(--mobile-olive-soft)!important;
+  border-radius:999px!important;
+  border:1px solid var(--mobile-beige)!important;
+}
+
+/* Same palette on mobile; only dimensions/layout may change */
+@media(max-width:700px){
+  html,body,
+  nav,main,.catalog-section,.catalog-header,.catalog-controls,
+  .products-grid,.category-nav,.category-menu,.side-style,.sidebar,
+  .filter-panel,.category-panel,.modal-box,.section-container{
+    background-color:var(--mobile-beige)!important;
+  }
+}
+
+
+/* FINAL PALETTE POLISH */
+:root {
+  --final-olive:#5F6B4B;
+  --final-olive-dark:#5F6B4B;
+  --final-beige:#F1EEE6;
+  --final-beige-2:#F7F4ED;
+  --final-beige-line:#DDD8CC;
+}
+/* Exact same olive for every green accent/button */
+.btn-add-cart,.btn-gold,.wishlist-add-btn,.badge,#scrollTopBtn,
+.hero .cta,.hero button,.collection-btn,.explore-btn,.shop-btn {
+  background:#5F6B4B!important;border-color:#5F6B4B!important;color:#fff!important;
+}
+.btn-add-cart:hover,.btn-gold:hover,.wishlist-add-btn:hover,
+.hero .cta:hover,.hero button:hover,.collection-btn:hover,
+.explore-btn:hover,.shop-btn:hover {
+  background:#5F6B4B!important;border-color:#5F6B4B!important;
+}
+.nav-links li a.active,.nav-links li a:hover,.product-price,.total-text,.modal-title {
+  color:#5F6B4B!important;
+}
+
+/* Lighter, cleaner beige */
+body,main,.catalog-section,.catalog-header,.catalog-controls,.products-grid,
+.category-nav,.category-menu,.side-style,.sidebar,.filter-panel,.category-panel,
+.modal-box,.section-container,#wishlistContent,#cartContent,#checkoutContent,
+#accountContent,#orderTrackingContent {
+  background:#F1EEE6!important;
+}
+.product-item,.filter-btn,.sort-custom-trigger,.sort-custom-menu,
+.wishlist-item-row,.promo-box,.form-group input,.form-group textarea,.form-group select {
+  background:#F7F4ED!important;border-color:#DDD8CC!important;
+}
+
+/* Delete/trash = exact same olive */
+.wishlist-remove-btn,.fa-trash,.delete-btn,.remove-btn {
+  color:#5F6B4B!important;background:transparent!important;border-color:transparent!important;
+}
+.wishlist-remove-btn:hover,.fa-trash:hover,.delete-btn:hover,.remove-btn:hover {
+  color:#5F6B4B!important;
+}
+
+/* Thick, short-looking modern scrollbar */
+* { scrollbar-width:auto;scrollbar-color:#5F6B4B #F1EEE6; }
+::-webkit-scrollbar { width:14px!important;height:14px!important; }
+::-webkit-scrollbar-track { background:#F1EEE6!important;border-radius:999px!important; }
+::-webkit-scrollbar-thumb {
+  background:#5F6B4B!important;border-radius:999px!important;
+  border:3px solid #F1EEE6!important;min-height:72px!important;
+}
+::-webkit-scrollbar-thumb:hover { background:#5F6B4B!important; }
+.products-grid::-webkit-scrollbar,.modal-box::-webkit-scrollbar,
+#lightboxModal::-webkit-scrollbar,.section-container::-webkit-scrollbar {
+  width:14px!important;
+}
+.products-grid::-webkit-scrollbar-thumb,.modal-box::-webkit-scrollbar-thumb,
+#lightboxModal::-webkit-scrollbar-thumb,.section-container::-webkit-scrollbar-thumb {
+  background:#5F6B4B!important;border-radius:999px!important;border:3px solid #F1EEE6!important;
+}
+
+/* Heart: normal + active use exactly the same olive */
+.product-card .wishlist,.product-card .heart,.product-card .favorite,
+.product-card .fa-heart,.wishlist-icon,.favorite-icon,
+.product-card .wishlist.active,.product-card .heart.active,
+.product-card .favorite.active,.product-card .fa-heart.active,
+.wishlist-icon.active,.favorite-icon.active {
+  color:#5F6B4B!important;background:transparent!important;border-color:transparent!important;
+}
+
+/* Contact stays the intentional olive section */
+footer,.home-contact,.contact-section {
+  background:#5F6B4B!important;color:#fff!important;
+}
+
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+<!-- Navbar -->
+    <nav>
+        <div class="logo-container" onclick="location.reload()">
+            <div class="logo-text">SAID STYLE</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a class="active" onclick="location.reload()">HOME</a></li>
+            <li><a onclick="openCategoryModal('Footwear')">FOOTWEAR</a></li>
+            <li><a onclick="openCategoryModal('Watches')">WATCHES</a></li>
+            <li><a onclick="openCategoryModal('Clothes')">Clothes</a></li>
+            <li><a onclick="openCategoryModal('Fragrance')">FRAGRANCE</a></li>
+            <li><a onclick="openCategoryModal('Beach')">BEACH WEAR</a></li>
+            <li><a onclick="openCategoryModal('Accessories')">ACCESSORIES</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <div class="icon-wrapper" onclick="openAccountModal()"><i class="fa-regular fa-user"></i></div>
+            <div class="icon-wrapper" onclick="openWishlistModal()">
+                <i class="fa-regular fa-heart"></i>
+                <span class="badge" id="wishlistBadge">0</span>
+            </div>
+            <div class="icon-wrapper" onclick="openCartModal()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="badge" id="cartBadge">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero.jpg">
+            <source src="videos/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <p class="hero-kicker">THE NEW SEASON</p>
+            <h1>SAID STYLE<br><span>ESSENTIALS</span></h1>
+            <p class="hero-subtitle">Premium casual wear, refined for everyday.</p>
+            <button class="btn-gold" onclick="openCategoryModal('Clothes')">SHOP THE COLLECTION</button>
+        </div>
+    </section>
+
+    <!-- Editorial Video Feature -->
+    <section class="editorial-video-section">
+        <div class="editorial-copy">
+            
+            <h2>Quiet Luxury.<br><em>Effortless Style.</em></h2>
+            <p>Discover the details, textures and silhouettes behind the SAID STYLE collection.</p>
+            <button class="editorial-btn" onclick="openCategoryModal('Clothes')">EXPLORE THE COLLECTION</button>
+        </div>
+        <div class="editorial-video-wrap">
+            <video class="editorial-video" autoplay muted loop playsinline preload="metadata">
+                <source src="videos/lookbook.mp4" type="video/mp4">
+            </video>
+            
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div id="scrollTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></div>
+
+    <!-- Toast Notification -->
+    <div id="toast">Item added successfully!</div>
+
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="lightboxModal" onclick="closeLightbox()">
+        <span id="lightboxClose">&times;</span>
+        <img id="lightboxImage">
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-info">
+            <h3>SAID STYLE</h3>
+            <p>Elevating your daily style with premium casual wear and essentials.</p>
+        </div>
+        <div class="footer-info">
+            <h3>CONTACT US</h3>
+            <p><i class="fa-solid fa-envelope"></i> support@saidstyle.com</p>
+            <p><i class="fa-solid fa-phone"></i> +20 100 000 0000</p>
+            <p><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</p>
+        </div>
+    </footer>
+
+    <!-- Modal العام -->
+    <div class="modal-overlay" id="mainModal">
+        <div class="modal-box">
+            <i class="fa-solid fa-xmark close-modal" onclick="closeModal()"></i>
+            
+            <div id="catalogContent" class="section-container">
+                <h2 class="modal-title" id="modalTitle">COLLECTION</h2> 
+                <div class="catalog-controls">
+                    <div class="filter-buttons" id="filterButtonsContainer">
+                        <!-- تُبنى ديناميكياً -->
+                    </div>
+                    <div>
+                        <select class="sort-dropdown" id="sortDropdown" onchange="sortCurrentProducts()" aria-hidden="true" tabindex="-1">
+                            <option value="default">Sort By: Default</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                        </select>
+                        <div class="sort-custom" id="sortCustom">
+                            <button type="button" class="sort-custom-trigger" onclick="toggleSortMenu(event)">
+                                <span id="sortCustomValue">Sort By: Default</span><span class="sort-chevron">⌄</span>
+                            </button>
+                            <div class="sort-custom-menu" id="sortCustomMenu">
+                                <button type="button" data-value="default" onclick="chooseSort('default', event)">Sort By: Default</button>
+                                <button type="button" data-value="low-high" onclick="chooseSort('low-high', event)">Price: Low to High</button>
+                                <button type="button" data-value="high-low" onclick="chooseSort('high-low', event)">Price: High to Low</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+
+            <div id="cartContent" class="section-container">
+                <h2 class="modal-title">YOUR SHOPPING BAG</h2>
+                <div id="cartItemsList"></div>
+                
+                <div class="promo-box">
+                    <input type="text" id="promoInput" placeholder="Enter Promo Code (e.g., SAID10)">
+                    <button class="btn-gold" onclick="applyPromoCode()">Apply</button>
+                </div>
+
+                <div id="cartSummaryContainer">
+                    <div class="total-text" id="cartTotalText">Total: $0.00</div>
+                </div>
+
+                <button class="btn-gold" style="width: 100%; margin-top: 15px;" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+            </div>
+
+            <div id="checkoutContent" class="section-container">
+                <h2 class="modal-title">SHIPPING & CHECKOUT</h2>
+                <form onsubmit="submitOrder(event)">
+                    <div class="form-group"><label>Full Name</label><input type="text" required placeholder="Enter your full name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" required placeholder="Enter your phone number"></div>
+                    <div class="form-group"><label>Delivery Address</label><textarea rows="3" required placeholder="Street address, City, Country"></textarea></div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select required>
+                            <option value="cod">Cash on Delivery</option>
+                            <option value="card">Credit / Debit Card</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-gold" style="width: 100%; margin-top: 20px;">COMPLETE ORDER</button>
+                </form>
+            </div>
+
+            <div id="wishlistContent" class="section-container">
+                <h2 class="modal-title">MY WISHLIST</h2>
+                <div id="wishlistItemsList"></div>
+            </div>
+
+            <div id="accountContent" class="section-container">
+                <h2 class="modal-title">CUSTOMER ACCOUNT</h2>
+                <form onsubmit="submitAccount(event)">
+                    <div class="form-group"><label>Email Address</label><input type="email" required placeholder="Enter your email"></div>
+                    <div class="form-group"><label>Password</label><input type="password" required placeholder="Enter your password"></div>
+                    <button type="submit" class="btn-gold" style="width: 100%; margin-top: 20px;">SIGN IN / CREATE ACCOUNT</button>
+                </form>
+            </div>
+
+            <div id="orderTrackingContent" class="section-container">
+                <h2 class="modal-title">ORDER STATUS & TRACKING</h2>
+                <div style="text-align: center; padding: 20px;" id="trackingDetailsBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let storeData = {
+
+            "Footwear": [
+                { id: 401, name: "Black Chelsea Boot", price: 120, img: "images/180.jpg", category: "Smart Casual", sizes: ["40", "41", "42", "43", "44"], desc: "Handcrafted genuine leather formal boot." },
+                { id: 402, name: "Classic Leather Loafer", price: 110, img: "images/181.jpg", category: "Smart Casual", sizes: ["40", "41", "42", "43", "44"], desc: "Polished leather derby for formal occasions." },
+            {
+    id: 403,
+    name: "Formal Lace-Up Dress Shoe",
+    price: 130,
+    img: "images/182.jpg",
+    category: "Footwear",
+    colors: [
+        { name: "Black", code: "#000000", img: "images/182.jpg" },
+        { name: "Havana", code: "#C87533", img: "images/777.jpg" },
+    ],
+    sizes: ["40", "41", "42", "43", "44"]
+},
+                { id: 404, name: "New Balance Retro Sneaker", price: 95, img: "images/183.jpg", category: "Casual", sizes: ["40", "41", "42", "43", "44"], desc: "Versatile sophisticated leather loafer." },
+                { id: 405, name: "Nike Low Dunk Sneaker", price: 105, img: "images/184.jpg", category: "Casual", sizes: ["40", "41", "42", "43"], desc: "Stylish smart casual everyday shoe." },
+                { id: 406, name: "White & Navy Sneaker", price: 115, img: "images/185.jpg", category: "Sport", sizes: ["41", "42", "43", "44", "45"], desc: "High-performance breathable trainer." }
+            ],
+            "Watches": [
+               { id: 101, name: "Cartier Santos", price: 150, img: "images/123.jpg", category: "Classic" },
+               { id: 102, name: "Seiko Vintage Square", price: 120, img: "images/124.jpg", category: "Vintage" },
+                { id: 103, name: "Rolex Daytona Chronograph", price: 150, img: "images/125.jpg", category: "Sport" },
+                { id: 104, name: "Tissot Automatic Skeleton", price: 160, img: "images/122.jpg", category: "Classic" },
+                { id: 105, name: "Classic Dress Leather", price: 175, img: "images/121.jpg", category: "Classic" },
+                { id: 106, name: "Rolex Datejust Black Dial", price: 135, img: "images/120.jpg", category: "Executive" },
+               { id: 107, name: "Vacheron Constantin 222 Gold Watch", price: 145, img: "images/126.jpg", category: "Executive" },
+                { id: 108, name: "Rolex Day-Date Green Dial Watch", price: 190, img: "images/127.jpg", category: "Executive" },
+            ],
+            "Clothes": [
+                { 
+                    id: 1, 
+                    name: "Sage Knit Polo Shirt", 
+                    price: 45, 
+                    img: "images/1.jpeg",
+                    category: "Polo",
+                    colors: [
+                        { name: "Mint", code: "#8fbc8f", img: "images/1.jpeg" },
+                        { name: "Brown", code: "#78350f", img: "images/11.jpg" },
+                        { name: "Yellow", code: "#facc15", img: "images/111.jpg" },
+                        { name: "Orange", code: "#f97316", img: "images/1111.jpg" },
+                        { name: "Black", code: "#000000", img: "images/11111.jpg" },
+                        { name: "White", code: "#ffffff", img: "images/111111.jpg" },
+                        { name: "Baby Blue", code: "#93c5fd", img: "images/1111111.jpg" }
+                    ],
+                    sizes: ["S", "M", "L", "XL"] 
+                },
+                { 
+                    id: 2, 
+                    name: "Classic Denim Overshirt", 
+                    price: 50, 
+                    img: "images/2.jpeg",
+                    category: "Shirt",
+                    colors: [
+                        { name: "Dark Denim", code: "#1e3a8a", img: "images/2.jpeg" },
+                        { name: "Light Denim", code: "#60a5fa", img: "images/22.jpg" },
+                        { name: "Black Denim", code: "#000000", img: "images/222.jpg" }
+                    ],
+                    sizes: ["S", "M", "L", "XL"] 
+                },
+                { 
+                    id: 3, 
+                    name: "Casual Blue Linen Shirt", 
+                    price: 40, 
+                    img: "images/3.jpeg",
+                    category: "Shirt",
+                    colors: [
+                        { name: "Navy", code: "#1e1b4b", img: "images/3.jpeg" },
+                        { name: "Olive", code: "#556b2f", img: "images/33.jpg" },
+                        { name: "Mint", code: "#8fbc8f", img: "images/333.jpg" },
+                        { name: "Beige", code: "#d9c39e", img: "images/3333.jpg" },
+                        { name: "Burgundy", code: "#800020", img: "images/33333.jpg" }
+                    ],
+                    sizes: ["S", "M", "L", "XL"] 
+                },
+                { 
+                    id: 4, 
+                    name: "Knitted Brown Cardigan", 
+                    price: 55, 
+                    img: "images/4.jpeg",
+                    category: "Outerwear",
+                    colors: [
+                        { name: "Brown", code: "#78350f", img: "images/4.jpeg" },
+                        { name: "Beige", code: "#d9c39e", img: "images/44.jpg" }
+                    ],
+                    sizes: ["M", "L", "XL"] 
+                },
+                { 
+                    id: 5, 
+                    name: "Black Leather Jacket", 
+                    price: 95, 
+                    img: "images/5.jpeg",
+                    category: "Outerwear",
+                    colors: [
+                        { name: "Brown", code: "#78350f", img: "images/5.jpeg" },
+                        { name: "Black", code: "#000000", img: "images/55.jpg" }
+                    ],
+                    sizes: ["S", "M", "L", "XL"] 
+                },
+                { 
+                    id: 6, 
+                    name: "Relaxed Fit Linen Shirt", 
+                    price: 60, 
+                    img: "images/6.jpeg",
+                    category: "Shirt",
+                    colors: [
+                        { name: "Beige", code: "#d9c39e", img: "images/6.jpeg" },
+                        { name: "White", code: "#ffffff", img: "images/66.jpg" },
+                        { name: "Olive", code: "#556b2f", img: "images/666.jpg" },
+                        { name: "Brown", code: "#78350f", img: "images/66666.jpg" },
+                        { name: "Black & White Stripe", code: "linear-gradient(135deg, #ffffff 50%, #000000 50%)", img: "images/666666.jpg" }
+                    ],
+                    sizes: ["M", "L", "XL"] 
+                },
+                {
+        "id": 7,
+        "name": "Urban Wide-Leg Denim Pants",
+        "price": 85,
+        "img": "images/70.jpg",
+        "category": "Pants",
+        "colors": [
+            { "name": "Blue", "code": "#2b4c7e", "img": "images/70.jpg" }
+        ],
+        "sizes": ["30", "32", "34", "36"]
+    },
+    {
+        "id": 8,
+        "name": "Utility Cargo Pocket Pants",
+        "price": 90,
+        "img": "images/71.jpg",
+        "category": "Pants",
+        "colors": [
+            { "name": "Beige", "code": "#d9c39e", "img": "images/71.jpg" },
+            { "name": "Olive", "code": "#556b2f", "img": "images/72.jpg" }
+        ],
+        "sizes": ["30", "32", "34", "36"]
+    },
+    {
+        "id": 9,
+        "name": "Relaxed Linen Beach Pants",
+        "price": 75,
+        "img": "images/75.jpg",
+        "category": "Pants",
+        "colors": [
+            { "name": "Beige", "code": "#d9c39e", "img": "images/75.jpg" },
+            { "name": "Olive", "code": "#556b2f", "img": "images/73.jpg" },
+            { "name": "Mint Green", "code": "#a8c3bc", "img": "images/74.jpg" }
+        ],
+        "sizes": ["30", "32", "34", "36"]
+    }
+            ],
+            "Fragrance": [
+                { id: 201, name: "Everlane Green Cedar Fragrance", price: 85, img: "images/133.jpg", category: "Woody" },
+                { id: 202, name: "Bvlgari Man Terrae Essence", price: 95, img: "images/131.jpg", category: "Woody" },
+                { id: 203, name: "Cartier Déclaration Parfum", price: 80, img: "images/132.jpg", category: "Spice" },
+                { id: 204, name: "Giorgio Armani Acqua Di Giò", price: 90, img: "images/134.jpg", category: "Fresh" },
+                { id: 205, name: "Givenchy Gentleman Eau de Parfum", price: 75, img: "images/130.jpg", category: "Oriental" }
+            ],
+    "Beach": [
+        { id: 301, name: "Blue Striped Boardshort", price: 35, img: "images/140.jpg", category: "Shorts", sizes: ["S", "M", "L", "XL"] },
+        { id: 302, name: "Forest Green Swim Trunks", price: 38, img: "images/141.jpg", category: "Trunks", sizes: ["S", "M", "L", "XL"] },
+        { id: 303, name: "Classic Black Swim Short", price: 40, img: "images/142.jpg", category: "Minimal", sizes: ["M", "L", "XL"] },
+        { id: 304, name: "Minimalist Striped Swimshort", price: 36, img: "images/143.jpg", category: "Minimal", sizes: ["S", "M", "L", "XL"] }
+    ],
+    "Accessories": [
+
+                { id: 502, name: "Luxury Leather Belt", price: 45, img: "images/160.jpg", category: "Belts" },
+               {
+    id: 502,
+    name: "Classic Monogram Belt",
+    price: 40,
+    img: "images/161.jpg",
+    category: "Belts",
+    colors: [
+        { name: "Havana", code: "#C87533", img: "images/161.jpg" },
+        { name: "Black", code: "#000000", img: "images/888.jpg" }
+    ]
+},
+                { id: 503, name: "Designer Buckle Belt", price: 30, img: "images/162.jpg", category: "Belts" },
+                { id: 505, name: "Monogram Bi-fold Wallet", price: 50, img: "images/164.jpg", category: "Wallets" },
+                { id: 506, name: "Lacoste Bi-fold Leather Wallet", price: 35, img: "images/165.jpg", category: "Wallets" },
+                { id: 506, name: "Goyard Saint Pierre Wallet", price: 45, img: "images/166.jpg", category: "Wallets" },
+               { id: 507, name: "Lacoste Aviator Sunglasses", price: 42, img: "images/167.jpg", category: "Eyewear" },
+                { id: 508, name: "Gucci Designer Sunglasses", price: 30, img: "images/168.jpg", category: "Eyewear" },
+                { id: 509, name: "Vintage Round Metal Sunglasses", price: 28, img: "images/169.jpg", category: "Eyewear" },
+                { id: 510, name: "Square Frame Sunglasses", price: 22, img: "images/170.jpg", category: "Eyewear" },
+                { id: 511, name: "Classic Tortoiseshell Sunglasses", price: 25, img: "images/171.jpg", category: "Eyewear" },
+                { id: 512, name: "Hermès Silk Tie", price: 20, img: "images/172.jpg", category: "Ties" },
+                { id: 513, name: "Louis Vuitton Silk Tie", price: 25, img: "images/173.jpg", category: "Ties" },
+                { id: 514, name: "Classic Black Silk Tie", price: 30, img: "images/174.jpg", category: "Ties" },
+                { id: 515, name: "Gucci Patterned Silk", price: 45, img: "images/175.jpg", category: "Ties" },
+            ],
+        };
+
+        let cart = loadFromStorage('said_cart') || [];
+        let wishlist = loadFromStorage('said_wishlist') || [];
+        let selectedColorIndex = {}; 
+        let selectedSizes = {}; 
+        let selectedVolumes = {};
+        let activeCategory = '';
+        let activeFilter = 'All';
+        let discountPercent = 0;
+        let lastOrderNumber = null;
+
+        function saveToStorage() {
+            localStorage.setItem('said_cart', JSON.stringify(cart));
+            localStorage.setItem('said_wishlist', JSON.stringify(wishlist));
+        }
+
+        function loadFromStorage(key) {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : null;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        window.onscroll = function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "flex";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openModal() { document.getElementById('mainModal').style.display = 'flex'; }
+        
+        function closeModal() {
+            document.getElementById('mainModal').style.display = 'none';
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+        }
+
+        function openCategoryModal(categoryName) {
+            activeCategory = categoryName;
+            activeFilter = 'All';
+            document.getElementById('sortDropdown').value = 'default';
+            document.getElementById('sortCustomValue').textContent = 'Sort By: Default';
+            document.getElementById('sortCustom').classList.remove('open');
+            document.querySelectorAll('.sort-custom-menu button').forEach(b => b.classList.toggle('active', b.dataset.value === 'default'));
+            openModal();
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('catalogContent').style.display = 'block';
+            document.getElementById('modalTitle').innerText = categoryName.toUpperCase();
+            
+            buildFilterButtons(categoryName);
+            renderProductsGrid();
+        }
+
+        function buildFilterButtons(categoryName) {
+            const container = document.getElementById('filterButtonsContainer');
+            container.innerHTML = '';
+            
+            const items = storeData[categoryName] || [];
+            const categories = ['All', ...new Set(items.map(i => i.category).filter(Boolean))];
+            
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `filter-btn ${activeFilter === cat ? 'active' : ''}`;
+                btn.innerText = cat;
+                btn.onclick = () => {
+                    activeFilter = cat;
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderProductsGrid();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+
+        function toggleSortMenu(event) {
+            event.stopPropagation();
+            document.getElementById('sortCustom').classList.toggle('open');
+        }
+
+        function chooseSort(value, event) {
+            event.stopPropagation();
+            const select = document.getElementById('sortDropdown');
+            const custom = document.getElementById('sortCustom');
+            const label = document.getElementById('sortCustomValue');
+            const labels = {
+                'default': 'Sort By: Default',
+                'low-high': 'Price: Low to High',
+                'high-low': 'Price: High to Low'
+            };
+            select.value = value;
+            label.textContent = labels[value];
+            custom.querySelectorAll('.sort-custom-menu button').forEach(btn =>
+                btn.classList.toggle('active', btn.dataset.value === value)
+            );
+            custom.classList.remove('open');
+            sortCurrentProducts();
+        }
+
+        document.addEventListener('click', function() {
+            const custom = document.getElementById('sortCustom');
+            if (custom) custom.classList.remove('open');
+        });
+
+        function renderProductsGrid() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            let products = storeData[activeCategory] || [];
+            
+            if (activeFilter !== 'All') {
+                products = products.filter(p => p.category === activeFilter);
+            }
+
+            const sortVal = document.getElementById('sortDropdown').value;
+            if (sortVal === 'low-high') {
+                products = [...products].sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'high-low') {
+                products = [...products].sort((a, b) => b.price - a.price);
+            }
+
+            if (products.length === 0) {
+                grid.innerHTML = '<p style="color:var(--text-gray); grid-column:span 3; text-align:center; padding:30px;">No products found in this filter.</p>';
+                return;
+            }
+
+            products.forEach(p => {
+                const isLiked = wishlist.some(item => item.id === p.id);
+                
+                if (p.colors && p.colors.length > 0 && selectedColorIndex[p.id] === undefined) {
+                    selectedColorIndex[p.id] = 0;
+                }
+                if (p.sizes && p.sizes.length > 0 && !selectedSizes[p.id]) {
+                    selectedSizes[p.id] = p.sizes[0];
+                }
+                if (activeCategory === 'Fragrance' && !selectedVolumes[p.id]) {
+                    selectedVolumes[p.id] = '50 ml';
+                }
+
+                let currentColorObj = p.colors ? p.colors[selectedColorIndex[p.id]] : null;
+                let activeImg = currentColorObj ? currentColorObj.img : p.img;
+                let displayPrice = p.price;
+                if (activeCategory === 'Fragrance' && selectedVolumes[p.id] === '100 ml') {
+                    displayPrice = p.price + 25;
+                }
+
+                let optionsHtml = '';
+                if (p.colors || p.sizes || activeCategory === 'Fragrance') {
+                    optionsHtml += '<div class="options-container">';
+                    
+                    if (p.colors) {
+                        optionsHtml += '<div class="color-selector">';
+                        p.colors.forEach((col, idx) => {
+                            let isSelected = selectedColorIndex[p.id] === idx ? 'selected' : '';
+                            let bgStyle = col.code.includes('gradient') ? `background: ${col.code};` : `background-color: ${col.code};`;
+                            optionsHtml += `<div class="color-option ${isSelected}" style="${bgStyle}" onclick="selectProductColor(${p.id}, ${idx})" title="${col.name}"></div>`;
+                        });
+                        optionsHtml += '</div>';
+                    }
+
+                    if (p.sizes) {
+                        optionsHtml += '<div class="size-selector">';
+                        p.sizes.forEach(sz => {
+                            let isSelected = selectedSizes[p.id] === sz ? 'selected' : '';
+                            optionsHtml += `<div class="size-option ${isSelected}" onclick="selectProductSize(${p.id}, '${sz}')">${sz}</div>`;
+                        });
+                        optionsHtml += '</div>';
+                    }
+
+                    if (activeCategory === 'Fragrance') {
+                        optionsHtml += '<div class="volume-selector">';
+                        ['50 ml', '100 ml'].forEach(vol => {
+                            let isSelected = selectedVolumes[p.id] === vol ? 'selected' : '';
+                            optionsHtml += `<div class="volume-option ${isSelected}" onclick="selectProductVolume(${p.id}, '${vol}')">${vol}</div>`;
+                        });
+                        optionsHtml += '</div>';
+                    }
+                    optionsHtml += '</div>';
+                }
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'product-item';
+                itemDiv.innerHTML = `
+                    <button class="product-heart ${isLiked ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
+                        <i class="fa-${isLiked ? 'solid' : 'regular'} fa-heart"></i>
+                    </button>
+                    <img src="${activeImg}" alt="${p.name}" onclick="openLightbox('${activeImg}')" title="Click to Zoom">
+                    <div class="product-name">${p.name}</div>
+                    <div class="product-price">$${displayPrice}</div>
+                    ${optionsHtml}
+                    <button class="btn-add-cart" onclick="addToCart(${p.id})">Add to Bag</button>
+                `;
+                grid.appendChild(itemDiv);
+            });
+        }
+
+        function selectProductColor(productId, colorIdx) {
+            selectedColorIndex[productId] = colorIdx;
+            renderProductsGrid();
+        }
+
+        function selectProductSize(productId, size) {
+            selectedSizes[productId] = size;
+            renderProductsGrid();
+        }
+
+        function selectProductVolume(productId, volume) {
+            selectedVolumes[productId] = volume;
+            renderProductsGrid();
+        }
+
+        function sortCurrentProducts() {
+            renderProductsGrid();
+        }
+
+        function openLightbox(imgSrc) {
+            document.getElementById('lightboxImage').src = imgSrc;
+            document.getElementById('lightboxModal').style.display = 'block';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        function openCartModal() {
+            openModal();
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('cartContent').style.display = 'block';
+            renderCartItems();
+        }
+
+        function renderCartItems() {
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = '';
+            let subtotal = 0;
+            
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="color:var(--text-gray); text-align:center; padding:20px;">Your shopping bag is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    subtotal += item.price * item.quantity;
+                    
+                    let detailsHtml = '';
+                    if (item.chosenColor || item.size || item.volume) {
+                        detailsHtml += `<div style="font-size:11px; color:var(--text-gray); margin-top:4px;">`;
+                        if (item.chosenColor) {
+                            let dotStyle = item.chosenColor.code.includes('gradient') ? `background: ${item.chosenColor.code};` : `background-color: ${item.chosenColor.code};`;
+                            detailsHtml += `Color: <span style="display:inline-block; width:10px; height:10px; ${dotStyle} border-radius:50%; vertical-align:middle; margin-left:3px; margin-right:8px;"></span>`;
+                        }
+                        if (item.size) {
+                            detailsHtml += `Size: <span style="color:var(--gold); font-weight:bold; margin-right:8px;">${item.size}</span>`;
+                        }
+                        if (item.volume) {
+                            detailsHtml += `Volume: <span style="color:var(--gold); font-weight:bold;">${item.volume}</span>`;
+                        }
+                        detailsHtml += `</div>`;
+                    }
+
+                    const row = document.createElement('div');
+                    row.className = 'cart-item-row';
+                    row.innerHTML = `
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="${item.img}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;">
+                            <div>
+                                <div>${item.name} (x${item.quantity})</div>
+                                ${detailsHtml}
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <span style="color:var(--gold);">$${item.price * item.quantity}</span>
+                            <i class="fa-solid fa-trash" style="color:var(--text-gray); cursor:pointer;" onclick="removeFromCart(${index})"></i>
+                        </div>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+
+            let discountAmount = (subtotal * discountPercent) / 100;
+            let finalTotal = subtotal - discountAmount;
+
+            let summaryHtml = `<div class="total-text" id="cartTotalText">Total: $${finalTotal.toFixed(2)}</div>`;
+            if (discountPercent > 0) {
+                summaryHtml = `
+                    <div style="font-size:13px; color:var(--text-gray); text-align:right;">Subtotal: $${subtotal.toFixed(2)}</div>
+                    <div style="font-size:13px; color:var(--gold); text-align:right;">Discount (${discountPercent}%): -$${discountAmount.toFixed(2)}</div>
+                    <div class="total-text" id="cartTotalText">Final Total: $${finalTotal.toFixed(2)}</div>
+                `;
+            }
+            document.getElementById('cartSummaryContainer').innerHTML = summaryHtml;
+            document.getElementById('cartBadge').innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
+        }
+
+        function applyPromoCode() {
+            const code = document.getElementById('promoInput').value.trim().toUpperCase();
+            if (code === 'SAID10') {
+                discountPercent = 10;
+                showToast('Promo Code Applied: 10% Off!');
+                renderCartItems();
+            } else {
+                alert('Invalid Promo Code. Try SAID10');
+            }
+        }
+
+        function addToCart(id) {
+            let product = null;
+            let foundCat = '';
+            for (let cat in storeData) {
+                let found = storeData[cat].find(p => p.id === id);
+                if (found) {
+                    product = found;
+                    foundCat = cat;
+                    break;
+                }
+            }
+            if (!product) return;
+            
+            let chosenColor = product.colors ? product.colors[selectedColorIndex[id] || 0] : null;
+            let chosenImg = chosenColor ? chosenColor.img : product.img;
+            let chosenSize = product.sizes ? (selectedSizes[id] || product.sizes[0]) : null;
+            let chosenVolume = foundCat === 'Fragrance' ? (selectedVolumes[id] || '50 ml') : null;
+            
+            let finalPrice = product.price;
+            if (foundCat === 'Fragrance' && chosenVolume === '100 ml') {
+                finalPrice += 25;
+            }
+
+            const existing = cart.find(item => item.id === id && item.chosenColor?.name === chosenColor?.name && item.size === chosenSize && item.volume === chosenVolume);
+            
+            if (existing) { 
+                existing.quantity += 1; 
+            } else { 
+                cart.push({ 
+                    ...product, 
+                    price: finalPrice, 
+                    quantity: 1, 
+                    chosenColor: chosenColor, 
+                    img: chosenImg, 
+                    size: chosenSize, 
+                    volume: chosenVolume 
+                }); 
+            }
+            
+            saveToStorage();
+            document.getElementById('cartBadge').innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
+            showToast('Product added to bag successfully!');
+        }
+
+        function removeFromCart(index) { 
+            cart.splice(index, 1); 
+            saveToStorage();
+            renderCartItems(); 
+        }
+
+        function openWishlistModal() {
+            openModal();
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('wishlistContent').style.display = 'block';
+            renderWishlistItems();
+        }
+
+        function renderWishlistItems() {
+            const list = document.getElementById('wishlistItemsList');
+            list.innerHTML = '';
+            if (wishlist.length === 0) {
+                list.innerHTML = '<p style="color:var(--text-gray); text-align:center; padding:20px;">Your wishlist is empty.</p>';
+            } else {
+                wishlist.forEach((item, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'wishlist-item-row';
+                    row.innerHTML = `
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="${item.img}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;">
+                            <span>${item.name}</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <span style="color:var(--olive-dark); font-weight:600;">$${item.price}</span>
+                            <button class="wishlist-add-btn" onclick="moveWishlistToBag(${index})">ADDED TO BAG</button>
+                            <i class="fa-solid fa-trash wishlist-remove-btn" style="display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="removeFromWishlist(${index})"></i>
+                        </div>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+            document.getElementById('wishlistBadge').innerText = wishlist.length;
+        }
+
+        function toggleWishlist(id) {
+            let product = null;
+            for (let cat in storeData) {
+                let found = storeData[cat].find(p => p.id === id);
+                if (found) { product = found; break; }
+            }
+            if (!product) return;
+
+            const index = wishlist.findIndex(item => item.id === id);
+            if (index > -1) { 
+                wishlist.splice(index, 1); 
+                showToast('Removed from wishlist');
+            } else { 
+                wishlist.push(product); 
+                showToast('Added to wishlist');
+            }
+            saveToStorage();
+            document.getElementById('wishlistBadge').innerText = wishlist.length;
+            renderProductsGrid();
+        }
+
+        function moveWishlistToBag(index) {
+            const item = wishlist[index];
+            if (!item) return;
+
+            const existing = cart.find(i =>
+                i.id === item.id && !i.chosenColor && !i.size && !i.volume
+            );
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({
+                    ...item,
+                    quantity: 1,
+                    chosenColor: null,
+                    size: item.sizes ? (selectedSizes[item.id] || item.sizes[0]) : null,
+                    volume: null
+                });
+            }
+
+            wishlist.splice(index, 1);
+            saveToStorage();
+            document.getElementById('cartBadge').innerText =
+                cart.reduce((sum, i) => sum + i.quantity, 0);
+            document.getElementById('wishlistBadge').innerText = wishlist.length;
+            renderWishlistItems();
+            showToast('Moved to bag successfully!');
+        }
+
+        function removeFromWishlist(index) {
+            wishlist.splice(index, 1);
+            saveToStorage();
+            renderWishlistItems();
+            document.getElementById('wishlistBadge').innerText = wishlist.length;
+        }
+
+        function openAccountModal() {
+            openModal();
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('accountContent').style.display = 'block';
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) { alert('Your bag is empty!'); return; }
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('checkoutContent').style.display = 'block';
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            lastOrderNumber = 'SS-' + Math.floor(100000 + Math.random() * 900000);
+            cart = [];
+            discountPercent = 0;
+            saveToStorage();
+            document.getElementById('cartBadge').innerText = '0';
+            
+            document.querySelectorAll('.section-container').forEach(el => el.style.display = 'none');
+            document.getElementById('orderTrackingContent').style.display = 'block';
+            document.getElementById('trackingDetailsBox').innerHTML = `
+                <i class="fa-solid fa-circle-check" style="font-size:45px; color:var(--gold); margin-bottom:15px;"></i>
+                <h3 style="color:var(--gold); margin-bottom:10px;">Order Placed Successfully!</h3>
+                <p style="color:var(--text-gray); margin-bottom:8px;">Your Tracking Number is: <strong style="color:#fff;">${lastOrderNumber}</strong></p>
+                <p style="color:var(--text-gray); font-size:13px;">Status: <span style="color:#4ade80;">Processing / Preparing Shipment</span></p>
+            `;
+        }
+
+        function submitAccount(e) {
+            e.preventDefault();
+            showToast('Account session started successfully!');
+            closeModal();
+        }
+
+        // تهيئة العدادات عند التحميل
+        document.getElementById('cartBadge').innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
+        document.getElementById('wishlistBadge').innerText = wishlist.length;
+    </script>
+</body>
+</html>
+<!-- FINAL REQUESTED VISUAL FIXES: beige menus + white Explore hover -->
+<style>
+:root{
+  --requested-beige:#E8E1D6;
+}
+
+/* Keep the page/panels on one soft beige tone */
+body,
+main,
+.catalog-section,
+.catalog-header,
+.catalog-controls,
+.products-grid,
+.category-nav,
+.category-menu,
+.side-style,
+.sidebar,
+.filter-panel,
+.category-panel,
+.modal-box,
+.section-container,
+#wishlistContent,
+#cartContent,
+#checkoutContent,
+#accountContent,
+#orderTrackingContent{
+  background-color:var(--requested-beige)!important;
+}
+
+/* All menus/dropdowns use the same beige background */
+.category-menu,
+.category-panel,
+.filter-panel,
+.side-style,
+.sidebar,
+.sort-custom-menu,
+.sort-dropdown,
+.sort-dropdown option,
+.sort-dropdown option:checked,
+.sort-dropdown option:hover,
+.nav-links,
+.menu,
+.dropdown-menu,
+.dropdown-content{
+  background-color:var(--requested-beige)!important;
+}
+
+/* Explore The Collection: hover becomes white */
+.editorial-btn:hover,
+.editorial-btn:focus-visible{
+  background:#fff!important;
+  color:#5F6B4B!important;
+  border-color:#fff!important;
+}
+
+/* Make the same hover behavior apply if the button uses an alternate class */
+.collection-btn:hover,
+.explore-btn:hover,
+.shop-btn:hover{
+  background:#fff!important;
+  color:#5F6B4B!important;
+  border-color:#fff!important;
+}
+</style>
